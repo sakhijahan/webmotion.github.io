@@ -180,7 +180,8 @@ textarea,input[type=text],select{width:100%;background:var(--card);border:1px so
 <div class="opt"><label>অ্যাসপেক্ট রেশিও</label><div class="chips" data-g="ar"><button class="chip on">১৬:৯</button><button class="chip">৯:১৬</button><button class="chip">১:১</button></div></div>
 <div class="opt"><label>ফরম্যাট</label><div class="chips"><button class="chip on">MP4</button></div></div>
 <div class="opt"><label>ফ্রেম রেট</label><div class="chips" data-g="fps"><button class="chip">২৪</button><button class="chip on">৩০</button><button class="chip">৬০</button></div></div>
-<button class="btn g" id="exgo" style="margin-top:6px">ডেমো এক্সপোর্ট চালান</button><div class="prg"><i id="exp1"></i></div><p class="mu" id="exmsg"></p></div></section>
+<button class="btn g" id="exgo" style="margin-top:6px">ডেমো এক্সপোর্ট চালান</button><div class="prg"><i id="exp1"></i></div><p class="mu" id="exmsg"></p>
+<div class="opt" style="margin-top:26px"><label>প্রকল্পের ফাইল (পরে MP4 রেন্ডারিংয়ের ইনপুট হবে)</label><div class="chips"><button class="chip on" id="pjdl">⬇ project.json ডাউনলোড</button><button class="chip" id="pjcp">লেখা কপি করুন</button><label class="chip" style="margin:0;display:inline-block">ফাইল খুলুন<input type="file" id="pjup" accept=".json,application/json" hidden></label></div><p class="mu" id="pjmsg"></p></div></div></section>
 <section class="scr" id="s-soon"><div class="pg"><h2 id="soonT"></h2><div class="demobox">এই অংশ এখনো তৈরি হয়নি। পরের ধাপে যুক্ত হবে।</div></div></section>
 </main></div>
 <div class="toast" id="toast"></div>
@@ -352,6 +353,21 @@ $('aig').onclick=function(){var q=$('aip').value.trim()||'আপনার ব্
 $('exp').onclick=function(){nav('export')};
 $('exgo').onclick=function(){var i=$('exp1'),m=$('exmsg'),p=0;m.textContent='ডেমো রেন্ডার চলছে... (কোনো ফাইল তৈরি হচ্ছে না)';i.style.width='0';
   var iv=setInterval(function(){p+=4;i.style.width=p+'%';if(p>=100){clearInterval(iv);m.textContent='ডেমো শেষ। কোনো ভিডিও ফাইল তৈরি হয়নি। আসল MP4 এক্সপোর্টে Remotion ও FFmpeg সার্ভার লাগবে।'}},120)};
+// ===== প্রকল্প ফাইল (project.json) =====
+function pjData(){
+  var g=function(k,arr){var el=document.querySelector('[data-g="'+k+'"]'),on=el&&el.querySelector('.on');return arr[on?[].indexOf.call(el.children,on):0]||arr[0]};
+  return {app:'webmotion',version:2,name:PR[pi].n,exportSettings:{resolution:g('res',[720,1080]),ratio:g('ar',['16:9','9:16','1:1']),fps:g('fps',[24,30,60])},previewRatio:ar==='r916'?'9:16':ar==='r11'?'1:1':'16:9',scenes:S}}
+function pjStr(){return JSON.stringify(pjData(),null,2)}
+function pjMsg(m){$('pjmsg').textContent=m}
+$('pjdl').onclick=function(){
+  if(!S.length){pjMsg('আগে অন্তত একটি দৃশ্য যোগ করুন।');return}
+  try{var b=new Blob([pjStr()],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='project.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},500);
+    pjMsg('ডাউনলোড শুরু হয়েছে। না এলে "লেখা কপি করুন" চাপুন।')}catch(e){pjMsg('ডাউনলোড হয়নি। "লেখা কপি করুন" ব্যবহার করুন।')}};
+$('pjcp').onclick=function(){
+  var t=pjStr(),ok=function(){pjMsg('কপি হয়েছে। Notepad-এ পেস্ট করে project.json নামে সেভ করুন।')},no=function(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(e){pjMsg('কপি হয়নি')}ta.remove()};
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,no);else no()};
+$('pjup').onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){
+  try{var d=JSON.parse(r.result);if(!d||!Array.isArray(d.scenes))throw 0;d.scenes.forEach(mig);PR.push({n:(d.name||'আমদানি প্রকল্প'),S:d.scenes});pi=PR.length-1;cur=0;save();nav('editor');toast('প্রকল্প খোলা হয়েছে')}catch(e){pjMsg('ফাইলটি ঠিক নেই, project.json দিন।')}};r.readAsText(f);this.value=''};
 nav('home');
 </script>
 </body>
