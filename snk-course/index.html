@@ -5,10 +5,14 @@
 <title>SNK IT Institute – AI-Powered UI/UX Career Program</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'Hind Siliguri';font-weight:400;font-display:swap;src:local('Hind Siliguri'),local('HindSiliguri-Regular'),url(../fonts/HindSiliguri-Regular.ttf) format('truetype')}
+@font-face{font-family:'Hind Siliguri';font-weight:500;font-display:swap;src:local('Hind Siliguri Medium'),local('HindSiliguri-Medium'),url(../fonts/HindSiliguri-Medium.ttf) format('truetype')}
+@font-face{font-family:'Hind Siliguri';font-weight:700;font-display:swap;src:local('Hind Siliguri Bold'),local('HindSiliguri-Bold'),url(../fonts/HindSiliguri-Bold.ttf) format('truetype')}
+
 :root{--u:clamp(28px,min(9.4vw,8vh),104px);--bg:#06121c;--ac:#ffc93c;--c2:#14b8a6;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
 *{box-sizing:border-box;margin:0}
 html,body{height:100%}
-body{background:var(--bg);color:#fff;font-family:'Hind Siliguri',system-ui,sans-serif;overflow:hidden}
+body{background:var(--bg);color:#fff;font-family:'Hind Siliguri','Nirmala UI','Vrinda','Shonar Bangla','Noto Sans Bengali',system-ui,sans-serif;overflow:hidden}
 .stage{position:fixed;inset:0;overflow:hidden}
 .orb{position:absolute;width:90vmax;height:90vmax;border-radius:50%;left:50%;top:50%}
 .o1{background:radial-gradient(circle,color-mix(in srgb,var(--c2) 38%,transparent),transparent 65%);animation:o1 16s ease-in-out infinite alternate}
@@ -168,6 +172,9 @@ body{background:var(--bg);color:#fff;font-family:'Hind Siliguri',system-ui,sans-
 
 .bwrap+.chips{margin-top:calc(var(--u)*.7)}
 @media (max-aspect-ratio:1/1){.pm{bottom:-9%;width:28%}.bwrap+.chips{margin-top:calc(var(--u)*1.1)}}
+.shot{position:absolute;left:0;top:0;width:100%;height:auto;display:block;z-index:2}
+.on .shot{animation:shs 5s cubic-bezier(.65,0,.35,1) 1.4s forwards}
+@keyframes shs{to{transform:translateY(var(--sy,0px))}}
 </style></head><body>
 <div class="stage" id="st">
  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
@@ -182,7 +189,7 @@ body{background:var(--bg);color:#fff;font-family:'Hind Siliguri',system-ui,sans-
 <script>
 // === ফোন নম্বর: ইংরেজি সংখ্যায় (যেমন 01712345678)। ফাঁকা থাকলে বাটন কাজ করবে না ===
 var PHONE='01705633700';
-var B={"link": "https://snkitinstitute.github.io", "scenes": [{"t": "hook", "d": 3.5, "text": "UI/UX শিখে ক্যারিয়ার গড়তে চাও?", "accent": "ক্যারিয়ার"}, {"t": "mock", "d": 5.5, "title": "AI-Powered UI/UX Career Program", "kind": "figma", "url": "figma.com/design", "toasts": ["🎨 Wireframe সম্পন্ন", "⚡ Prototype তৈরি"], "chips": ["৩ মাস", "Figma ও Prototyping", "AI ডিজাইন ওয়ার্কফ্লো"]}, {"t": "offer", "d": 6, "badge": "Special Offer", "old": "৳১১,৫০০", "price": 7490, "prefix": "৳", "suffix": "", "bullets": ["১০০% প্র্যাকটিক্যাল", "সার্টিফিকেট", "এক্সপার্ট ইন্সট্রাক্টর", "ক্যারিয়ার গাইডেন্স"], "note": "SNK IT Institute · Learn To Lead"}, {"t": "cta", "d": 6, "title": "এখনই ভর্তি হও", "button": "WhatsApp: 01705633700", "sub": "SNK IT Institute · Learn To Lead"}]};
+var B={"link": "https://snkitinstitute.github.io", "scenes": [{"t": "hook", "d": 3.5, "text": "UI/UX শিখে ক্যারিয়ার গড়তে চাও?", "accent": "ক্যারিয়ার"}, {"t": "mock", "d": 5.5, "title": "AI-Powered UI/UX Career Program", "kind": "figma", "url": "figma.com/design", "shot": "../shots/snk.jpg", "toasts": ["🎨 Wireframe সম্পন্ন", "⚡ Prototype তৈরি"], "chips": ["৩ মাস", "Figma ও Prototyping", "AI ডিজাইন ওয়ার্কফ্লো"]}, {"t": "offer", "d": 6, "badge": "Special Offer", "old": "৳১১,৫০০", "price": 7490, "prefix": "৳", "suffix": "", "bullets": ["১০০% প্র্যাকটিক্যাল", "সার্টিফিকেট", "এক্সপার্ট ইন্সট্রাক্টর", "ক্যারিয়ার গাইডেন্স"], "note": "SNK IT Institute · Learn To Lead"}, {"t": "cta", "d": 6, "title": "এখনই ভর্তি হও", "button": "WhatsApp: 01705633700", "sub": "SNK IT Institute · Learn To Lead"}]};
 var $=function(i){return document.getElementById(i)};
 function esc(x){return String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function bn(n){return String(n).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d]})}
@@ -203,13 +210,15 @@ function mock(s){
   }
   var toasts=(s.toasts||[]).map(function(t,i){return '<div class="toast '+(i%2?'lf':'r')+'" style="top:'+(8+i*34)+'%;--d:'+(2.2+i*.8).toFixed(1)+'s">'+esc(t)+'</div>'}).join('');
   var phone=fg?'':'<div class="pm"><div class="pn2"><b></b><div class="pg"></div><i></i><i class="s"></i><u></u></div></div>';
-  return line(s.title,.1,.8)+'<div class="bwrap"><div class="b3d"><div class="bx '+(fg?'fgm':'')+'"><div class="bar"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#22c55e"></i><b>'+esc(s.url)+'</b></div><div class="vp">'+body+'</div></div></div>'+phone+toasts+'</div>'+chips(s.chips,1.8,.25)}
+  return line(s.title,.1,.8)+'<div class="bwrap"><div class="b3d"><div class="bx '+(fg?'fgm':'')+'"><div class="bar"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#22c55e"></i><b>'+esc(s.url)+'</b></div><div class="vp">'+body+(s.shot?'<img class="shot" src="'+esc(s.shot)+'" alt="" onload="fitShot(this)" onerror="this.remove()">':'')+'</div></div></div>'+phone+toasts+'</div>'+chips(s.chips,1.8,.25)}
 function offer(s){
   return '<div class="badge">'+esc(s.badge)+'</div>'+(s.old?'<div class="old">'+esc(s.old)+'</div>':'')+
    '<div class="pw"><span class="ring" style="--d:0s"></span><span class="ring" style="--d:.65s"></span><span class="ring" style="--d:1.3s"></span><div class="price" data-p="'+s.price+'">'+s.prefix+'০</div></div>'+
    (s.suffix?'<div class="suf">'+esc(s.suffix)+'</div>':'')+chips(s.bullets,1.5,.22,'✔ ')+(s.note?line(s.note,2.6,.38,500):'')}
 function cta(s){
   return line(s.title,.1,1.05)+'<div class="btnw"><span class="pill" style="--d:0s"></span><span class="pill" style="--d:.9s"></span><a class="btn" id="cta" href="#">'+esc(s.button)+'</a></div>'+line(s.sub,1.1,.5,500)}
+function fitShot(i){var d=i.parentNode.clientHeight-i.clientHeight;i.style.setProperty('--sy',(d<0?d:0)+'px')}
+addEventListener('resize',function(){[].forEach.call(document.querySelectorAll('.shot'),fitShot)});
 var VIEW={hook:function(s){return words(s.text,s.accent)},mock:mock,offer:offer,cta:cta};
 var host=$('scs'),els=[];
 B.scenes.forEach(function(s,i){var d=document.createElement('div');d.className='sc'+(s.kind==='figma'?' fg':'');d.innerHTML=VIEW[s.t](s);host.appendChild(d);els.push(d)});

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AbsoluteFill, Sequence, useCurrentFrame, useVideoConfig, Easing, interpolate, delayRender, continueRender} from 'remotion';
+import {AbsoluteFill, Img, staticFile, Sequence, useCurrentFrame, useVideoConfig, Easing, interpolate, delayRender, continueRender} from 'remotion';
 
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
 const cl = (x) => Math.max(0, Math.min(1, x));
@@ -152,7 +152,20 @@ const Toast = ({text, delay, size, side, top}) => {
   );
 };
 
-const Browser = ({bw, c, kind, url, delay = 0}) => {
+const ShotView = ({src, w, h, delay, fallback}) => {
+  const f = useCurrentFrame();
+  const [handle] = useState(() => delayRender('shot'));
+  const [ratio, setRatio] = useState(null);
+  const [err, setErr] = useState(false);
+  const done = () => { try { continueRender(handle); } catch (e) {} };
+  if (err) return fallback;
+  const imgH = ratio ? w * ratio : h;
+  const sy = interpolate(f, [delay + 40, delay + 170], [0, -Math.max(0, imgH - h)], {...CLAMP, easing: Easing.inOut(Easing.cubic)});
+  return <Img src={staticFile(src)} onLoad={(e) => { setRatio(e.currentTarget.naturalHeight / e.currentTarget.naturalWidth); done(); }}
+    onError={() => { setErr(true); done(); }} style={{width: '100%', display: 'block', transform: `translateY(${sy}px)`}} />;
+};
+
+const Browser = ({bw, c, kind, url, shot, delay = 0}) => {
   const f = useCurrentFrame();
   const p = ease(cl((f - delay) / 28));
   const bh = bw * 0.72;
@@ -175,7 +188,7 @@ const Browser = ({bw, c, kind, url, delay = 0}) => {
           <div style={{marginLeft: bar * 0.4, background: kind === 'figma' ? '#3a3a44' : '#fff', borderRadius: 99, padding: `0 ${bar * 0.5}px`, fontSize: bar * 0.4, color: '#888', lineHeight: `${bar * 0.6}px`}}>{url}</div>
         </div>
         <div style={{position: 'relative', height: bh - bar, overflow: 'hidden'}}>
-          {kind === 'figma' ? (
+          {shot ? <ShotView src={shot} w={bw} h={bh - bar} delay={delay} fallback={<div style={{color:'#888',padding:bw*0.05}}>screenshot পাওয়া যায়নি</div>} /> : kind === 'figma' ? (
             <>
               {frames.map((fr, i) => {
                 const q = ease(cl((f - delay - 20 - i * 14) / 18));
@@ -219,7 +232,7 @@ const MockScene = ({s, c, u, tall}) => {
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: u * 0.5, width: '92%'}}>
       <Line size={u * 0.72} delay={2}>{s.title}</Line>
       <div style={{position: 'relative'}}>
-        <Browser bw={bw} c={c} kind={s.kind} url={s.url} delay={12} />
+        <Browser bw={bw} c={c} kind={s.kind} url={s.url} shot={s.shot} delay={12} />
         {(s.toasts || []).map((t, i) => <Toast key={i} text={t} delay={60 + i * 28} size={ts} side={i % 2 ? 'left' : 'right'} top={bw * (0.12 + i * 0.32)} />)}
       </div>
       <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: u * 0.2}}>

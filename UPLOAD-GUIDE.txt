@@ -1,0 +1,19 @@
+GitHub-এ তোলার নিয়ম (একবারে সব)
+
+১. এই zip খুলে ফোল্ডারের ভেতরে ঢুকুন (যেখানে index.html দেখা যায়)।
+২. ভেতরের সব ফাইল ও ফোল্ডার সিলেক্ট করুন (Ctrl + A)।
+৩. GitHub রিপো > Add file > Upload files, সেখানে টেনে ছেড়ে দিন।
+৪. Commit changes চাপুন।
+(বাইরের ফোল্ডারটা নিজে টানবেন না, নইলে সব একটা বাড়তি ফোল্ডারের ভেতরে ঢুকে যাবে।)
+
+ভেতরে যা আছে:
+  index.html            হাব পেজ
+  websitesdeal-sale/    Websitesdeal অ্যানিমেটেড সেল সাইট
+  snk-course/           SNK কোর্স অ্যানিমেটেড সাইট
+  editor/               WebMotion এডিটর
+  fonts/                Hind Siliguri ফন্টের ফাইল রাখার জায়গা (README দেখুন)
+  shots/                ওয়েবসাইটের পুরো স্ক্রিনশট রাখার জায়গা (README দেখুন)
+  src/, package.json, project.json, public/   ভিডিও বানানোর কোড (Remotion)
+  CNAME                 lives.websitesdeal.com
+  VOICEOVER.txt         ভয়েসের লেখা
+পুরনো বাড়তি ফাইল (index.txt, webmotion-site-update-v3 ফোল্ডার) রিপো থেকে মুছে দিন।
