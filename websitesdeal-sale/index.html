@@ -5,7 +5,7 @@
 <title>Websitesdeal – ব্যবসার ওয়েবসাইট মাত্র ৪৯৯ টাকা/মাস</title>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--u:clamp(26px,min(9.2vw,5.4vh),88px);--bg:#0b0f1a;--ac:#c6ff3d;--c2:#2b50ff;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
+:root{--u:clamp(28px,min(9.4vw,8vh),104px);--bg:#0b0f1a;--ac:#c6ff3d;--c2:#2b50ff;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);box-sizing:border-box}
 *{box-sizing:border-box;margin:0}
 html,body{height:100%}
 body{background:var(--bg);color:#fff;font-family:'Hind Siliguri',system-ui,sans-serif;overflow:hidden}
@@ -117,6 +117,57 @@ body{background:var(--bg);color:#fff;font-family:'Hind Siliguri',system-ui,sans-
 .replay{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .prog{position:fixed;left:0;top:0;height:4px;background:var(--ac);width:0;z-index:5}
 @media (prefers-reduced-motion:reduce){.grid,.orb,.sp,.grain{animation:none}}
+
+/* ===== v3: বড় লেখা ও আসল ওয়েবসাইটের মতো মকআপ ===== */
+.bx{container-type:inline-size;width:min(90vw,52vh*1.35,1040px)}
+.bar{font-size:1.9cqw;height:7.5%}
+.bar i{width:1.4cqw;height:1.4cqw}.bar b{padding:.4cqw 2cqw}
+.sk{background:#fff;color:#0b0f1a;display:block}
+.nv{display:flex;align-items:center;gap:3cqw;padding:2cqw 4cqw;border-bottom:1px solid #eee;font-size:1.9cqw}
+.nv b{font-size:2.5cqw;margin-right:auto;color:var(--c2)}
+.nv em{font-style:normal;background:var(--c2);color:#fff;padding:.9cqw 2.4cqw;border-radius:99px}
+.hr{display:flex;gap:3cqw;padding:5cqw 4cqw;background:linear-gradient(135deg,color-mix(in srgb,var(--c2) 12%,#fff),#fff)}
+.hr .ht{flex:1.2}.hr h4{font-size:4.8cqw;line-height:1.2;margin-bottom:1.5cqw}.hr p{font-size:2cqw;color:#556;margin-bottom:2.5cqw}
+.hr u{display:inline-block;text-decoration:none;background:var(--c2);color:#fff;font-size:2cqw;padding:1.2cqw 3cqw;border-radius:99px;font-weight:700}
+.hr .hi{flex:1;position:relative;border-radius:2cqw;background:linear-gradient(135deg,var(--c2),var(--ac));min-height:24cqw}
+.hr .hi i{position:absolute;border-radius:2cqw;background:rgba(255,255,255,.38)}
+.fe{display:flex;gap:2cqw;padding:3cqw 4cqw;font-size:2cqw;font-weight:500}
+.fe div{flex:1;background:#f4f6fb;border-radius:1.6cqw;padding:2cqw;text-align:center}
+.pc{display:flex;gap:2.5cqw;padding:2cqw 4cqw 8cqw}
+.pc div{flex:1;border-radius:1.8cqw;border:1px solid #eceef5;padding:1.6cqw;font-size:2cqw;font-weight:500}
+.pc i{display:block;height:14cqw;border-radius:1.2cqw;background:linear-gradient(135deg,#e7ebff,#f6f8ff);margin-bottom:1.4cqw}
+.pc s{display:block;text-decoration:none;color:var(--c2);font-weight:700;margin-top:.6cqw}
+.sk{animation:scr2 4.2s cubic-bezier(.65,0,.35,1) 1.3s forwards}
+@keyframes scr2{to{transform:translateY(-30%)}}
+.toast{background:#fff;color:#0b0f1a;font-weight:600;border:0;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:1.4em;padding:.7em 1.1em;font-size:calc(var(--u)*.4);box-shadow:0 18px 44px rgba(0,0,0,.4);display:flex;align-items:center;gap:.6em;z-index:3}
+.toast::before{content:"";width:.7em;height:.7em;border-radius:50%;background:var(--ac);box-shadow:0 0 0 .25em color-mix(in srgb,var(--ac) 30%,transparent);flex:none}
+.pm{position:absolute;right:-2%;bottom:-12%;width:22%;aspect-ratio:9/18;border-radius:3.2vmin;background:#0b0f1a;padding:.8vmin;box-shadow:0 4vmin 9vmin rgba(0,0,0,.6),0 0 6vmin color-mix(in srgb,var(--c2) 45%,transparent);opacity:0;z-index:2}
+.on .pm{animation:pmi 1s cubic-bezier(.16,1,.3,1) 1.6s forwards}
+@keyframes pmi{from{opacity:0;transform:translateY(8vmin)}to{opacity:1;transform:none}}
+.pn2{height:100%;border-radius:2.5vmin;background:#fff;overflow:hidden;padding:7% 8%;display:flex;flex-direction:column;gap:6%}
+.pn2 b{height:4%;width:40%;background:var(--c2);border-radius:99px}
+.pn2 .pg{flex:.9;border-radius:1.4vmin;background:linear-gradient(135deg,var(--c2),var(--ac))}
+.pn2 i{height:4%;background:#e6e9f2;border-radius:99px}.pn2 i.s{width:60%}
+.pn2 u{height:8%;background:var(--c2);border-radius:99px;width:70%}
+.fgm .vp{background:#1e1e24}
+.fp{position:absolute;top:0;bottom:0;width:17%;background:#2a2a32;padding:2.4cqw;display:flex;flex-direction:column;gap:1.6cqw}
+.fp.lf{left:0}.fp.rt{right:0}
+.fp i{height:2.2cqw;border-radius:99px;background:#44444f}.fp i:nth-child(odd){width:75%}
+.fp em{height:3cqw;border-radius:1cqw;background:var(--ac);opacity:.9;width:60%}
+.cvs{position:absolute;left:17%;right:17%;top:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:3cqw;padding:3cqw}
+.art{position:relative;flex:1;max-width:19cqw;aspect-ratio:9/17;border-radius:2cqw;background:#fff;padding:2cqw;overflow:hidden;outline:2px solid var(--ac);outline-offset:4px}
+.art.b{background:#f4f4ff}.art.c{background:color-mix(in srgb,var(--c2) 18%,#fff)}
+.sc2{display:flex;flex-direction:column;gap:1.8cqw;height:100%}
+.sc2 b{height:3cqw;width:50%;border-radius:99px;background:var(--c2)}
+.sc2 i{height:8cqw;border-radius:1.4cqw;background:linear-gradient(135deg,var(--c2),var(--ac))}
+.sc2 i+i{height:2cqw;background:#dfe3ee;border-radius:99px}.sc2 i.s{width:60%}
+.sc2 u{margin-top:auto;height:4cqw;border-radius:99px;background:var(--ac)}
+.fgm .cur{border-left-width:2.4cqw;border-top-width:3.8cqw;border-bottom-width:3.8cqw}
+.hook{font-size:calc(var(--u)*1.55)}
+@media (max-aspect-ratio:1/1){.hook{font-size:calc(var(--u)*1.6)}.pm{right:-5%;bottom:-18%;width:30%}}
+
+.bwrap+.chips{margin-top:calc(var(--u)*.7)}
+@media (max-aspect-ratio:1/1){.pm{bottom:-9%;width:28%}.bwrap+.chips{margin-top:calc(var(--u)*1.1)}}
 </style></head><body>
 <div class="stage" id="st">
  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
@@ -141,10 +192,18 @@ function line(t,d,sz,wt){return '<div class="l" style="font-size:calc(var(--u)*'
 function chips(a,d0,gap,pre){return '<div class="chips">'+a.map(function(t,i){return '<div class="chip" style="--d:'+(d0+i*gap).toFixed(2)+'s">'+(pre||'')+esc(t)+'</div>'}).join('')+'</div>'}
 function mock(s){
   var fg=s.kind==='figma',body;
-  if(fg){body='<div class="fr" style="left:8%;top:10%;width:36%;height:50%;background:var(--ac);--d:.8s"></div><div class="fr" style="left:52%;top:10%;width:40%;height:30%;background:var(--c2);--d:1s"></div><div class="fr" style="left:52%;top:46%;width:40%;height:30%;background:#fff;--d:1.2s"></div><div class="cur"></div>'}
-  else{body='<div class="sk"><div class="h1"><i></i><i></i><u></u></div><div class="cd"><i></i><i></i><i></i></div><div class="bg2"></div></div><div class="cur"></div><div class="rip"></div>'}
-  var toasts=(s.toasts||[]).map(function(t,i){return '<div class="toast '+(i%2?'lf':'r')+'" style="top:'+(10+i*32)+'%;--d:'+(2.2+i*.8).toFixed(1)+'s">'+esc(t)+'</div>'}).join('');
-  return line(s.title,.1,.72)+'<div class="bwrap"><div class="b3d"><div class="bx '+(fg?'fgm':'')+'"><div class="bar"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#22c55e"></i><b>'+esc(s.url)+'</b></div><div class="vp">'+body+'</div></div></div>'+toasts+'</div>'+chips(s.chips,1.8,.25)}
+  if(fg){
+    var ui='<div class="sc2"><b></b><i></i><i></i><i class="s"></i><u></u></div>';
+    body='<div class="fp lf"><em></em><i></i><i></i><i></i><i></i><i></i></div><div class="cvs"><div class="art a fr" style="--d:.8s">'+ui+'</div><div class="art b fr" style="--d:1.05s">'+ui+'</div><div class="art c fr" style="--d:1.3s">'+ui+'</div></div><div class="fp rt"><em></em><i></i><i></i><i></i></div><div class="cur"></div>';
+  }else{
+    body='<div class="sk"><div class="nv"><b>আপনার ব্যবসা</b><span>হোম</span><span>সেবা</span><span>যোগাযোগ</span><em>অর্ডার</em></div>'+
+      '<div class="hr"><div class="ht"><h4>সেরা সেবা,<br>এখন অনলাইনে</h4><p>ঘরে বসেই অর্ডার ও অ্যাপয়েন্টমেন্ট</p><u>এখনই অর্ডার করুন</u></div><div class="hi"><i style="width:44%;height:60%;left:10%;top:15%"></i><i style="width:30%;height:40%;right:8%;bottom:10%"></i></div></div>'+
+      '<div class="fe"><div>⚡ দ্রুত</div><div>🔒 নিরাপদ</div><div>📱 মোবাইল</div></div>'+
+      '<div class="pc"><div><i></i>সেবা ১<s>৳৯৯৯</s></div><div><i></i>সেবা ২<s>৳১,২৯৯</s></div><div><i></i>সেবা ৩<s>৳১,৯৯৯</s></div></div></div><div class="cur"></div><div class="rip"></div>';
+  }
+  var toasts=(s.toasts||[]).map(function(t,i){return '<div class="toast '+(i%2?'lf':'r')+'" style="top:'+(8+i*34)+'%;--d:'+(2.2+i*.8).toFixed(1)+'s">'+esc(t)+'</div>'}).join('');
+  var phone=fg?'':'<div class="pm"><div class="pn2"><b></b><div class="pg"></div><i></i><i class="s"></i><u></u></div></div>';
+  return line(s.title,.1,.8)+'<div class="bwrap"><div class="b3d"><div class="bx '+(fg?'fgm':'')+'"><div class="bar"><i style="background:#ef4444"></i><i style="background:#f59e0b"></i><i style="background:#22c55e"></i><b>'+esc(s.url)+'</b></div><div class="vp">'+body+'</div></div></div>'+phone+toasts+'</div>'+chips(s.chips,1.8,.25)}
 function offer(s){
   return '<div class="badge">'+esc(s.badge)+'</div>'+(s.old?'<div class="old">'+esc(s.old)+'</div>':'')+
    '<div class="pw"><span class="ring" style="--d:0s"></span><span class="ring" style="--d:.65s"></span><span class="ring" style="--d:1.3s"></span><div class="price" data-p="'+s.price+'">'+s.prefix+'০</div></div>'+
