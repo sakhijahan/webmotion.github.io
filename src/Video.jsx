@@ -61,16 +61,30 @@ const Txt = ({t, d, u, k}) => {
   );
 };
 
-const SceneView = ({sc, u, k, width}) => (
-  <AbsoluteFill style={{background: `linear-gradient(150deg, ${sc.bg || TH[sc.t || 0]}, #000)`}}>
-    {sc.img ? (
-      <div style={{position: 'absolute', left: '7%', right: '7%', top: '6%', height: '52%', borderRadius: width * 0.01, overflow: 'hidden', background: '#fff', boxShadow: '0 20px 50px rgba(0,0,0,.5)'}}>
-        <img src={sc.img} style={{width: '100%', display: 'block'}} />
-      </div>
-    ) : null}
-    {sc.texts.map((t, i) => <Txt key={i} t={t} d={sc.d} u={u} k={k} />)}
-  </AbsoluteFill>
-);
+const SceneView = ({sc, u, k, width}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const n = Math.max(1, Math.round(sc.d * fps));
+  const md = sc.imgMode || 'frame';
+  const prog = Math.min(1, frame / n);
+  const box = md === 'cover'
+    ? {position: 'absolute', left: '15%', right: '15%', top: '19%', height: '62%', borderRadius: width * 0.015, overflow: 'hidden', background: '#fff',
+       boxShadow: '0 30px 80px rgba(0,0,0,.6), 0 0 90px rgba(104,222,52,.2)', transform: `perspective(${width * 1.2}px) rotateY(${Math.sin(frame / 40) * 6}deg) rotateX(2deg)`}
+    : {position: 'absolute', left: '7%', right: '7%', top: '6%', height: '52%', borderRadius: width * 0.01, overflow: 'hidden', background: '#fff', boxShadow: '0 20px 50px rgba(0,0,0,.5)'};
+  return (
+    <AbsoluteFill style={{background: `linear-gradient(150deg, ${sc.bg || TH[sc.t || 0]}, #000)`}}>
+      {sc.img && md === 'full' ? (
+        <>
+          <img src={sc.img} style={{position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: `scale(${1 + 0.12 * prog})`}} />
+          <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.15) 40%, rgba(0,0,0,.65))'}} />
+        </>
+      ) : sc.img ? (
+        <div style={box}><img src={sc.img} style={{width: '100%', display: 'block'}} /></div>
+      ) : null}
+      {sc.texts.map((t, i) => <Txt key={i} t={t} d={sc.d} u={u} k={k} />)}
+    </AbsoluteFill>
+  );
+};
 
 export const Video = ({project, ratio}) => {
   useFonts();
