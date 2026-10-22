@@ -1,0 +1,153 @@
+{
+  "app": "webmotion",
+  "version": 2,
+  "name": "SNK IT Institute – নমুনা প্রোমো",
+  "exportSettings": {
+    "resolution": 1080,
+    "ratio": "16:9",
+    "fps": 30
+  },
+  "previewRatio": "16:9",
+  "scenes": [
+    {
+      "n": "হিরো",
+      "d": 4,
+      "t": 0,
+      "texts": [
+        {
+          "x": "আজ শেখো\nভবিষ্যৎ গড়ো",
+          "font": "Hind Siliguri",
+          "size": 15,
+          "weight": 700,
+          "color": "#ffffff",
+          "align": "center",
+          "px": 50,
+          "py": 44,
+          "anim": "zoom",
+          "dur": 0.8,
+          "delay": 0,
+          "out": false
+        },
+        {
+          "x": "SNK IT Institute · Learn To Lead",
+          "font": "Hind Siliguri",
+          "size": 7,
+          "weight": 500,
+          "color": "#68DE34",
+          "align": "center",
+          "px": 50,
+          "py": 68,
+          "anim": "fade",
+          "dur": 0.8,
+          "delay": 0.9,
+          "out": false
+        }
+      ]
+    },
+    {
+      "n": "কোর্স",
+      "d": 4,
+      "t": 1,
+      "texts": [
+        {
+          "x": "AI-Powered UI/UX\nক্যারিয়ার প্রোগ্রাম",
+          "font": "Hind Siliguri",
+          "size": 13,
+          "weight": 700,
+          "color": "#ffffff",
+          "align": "center",
+          "px": 50,
+          "py": 44,
+          "anim": "slideL",
+          "dur": 0.8,
+          "delay": 0,
+          "out": false
+        },
+        {
+          "x": "৩ মাস · ১০০% প্র্যাকটিক্যাল",
+          "font": "Hind Siliguri",
+          "size": 7,
+          "weight": 500,
+          "color": "#68DE34",
+          "align": "center",
+          "px": 50,
+          "py": 68,
+          "anim": "fade",
+          "dur": 0.8,
+          "delay": 0.9,
+          "out": false
+        }
+      ]
+    },
+    {
+      "n": "অফার",
+      "d": 4,
+      "t": 2,
+      "texts": [
+        {
+          "x": "Special Offer\n৳৭,৪৯০",
+          "font": "Hind Siliguri",
+          "size": 16,
+          "weight": 700,
+          "color": "#ffffff",
+          "align": "center",
+          "px": 50,
+          "py": 44,
+          "anim": "zoom",
+          "dur": 0.8,
+          "delay": 0,
+          "out": false
+        },
+        {
+          "x": "আগে ছিল ৳১১,৫০০",
+          "font": "Hind Siliguri",
+          "size": 7,
+          "weight": 500,
+          "color": "#68DE34",
+          "align": "center",
+          "px": 50,
+          "py": 68,
+          "anim": "fade",
+          "dur": 0.8,
+          "delay": 0.9,
+          "out": false
+        }
+      ]
+    },
+    {
+      "n": "যোগাযোগ",
+      "d": 4,
+      "t": 3,
+      "texts": [
+        {
+          "x": "এখনই ভর্তি হও",
+          "font": "Hind Siliguri",
+          "size": 15,
+          "weight": 700,
+          "color": "#ffffff",
+          "align": "center",
+          "px": 50,
+          "py": 44,
+          "anim": "word",
+          "dur": 0.8,
+          "delay": 0,
+          "out": false
+        },
+        {
+          "x": "WhatsApp-এ মেসেজ করুন",
+          "font": "Hind Siliguri",
+          "size": 7,
+          "weight": 500,
+          "color": "#68DE34",
+          "align": "center",
+          "px": 50,
+          "py": 68,
+          "anim": "fade",
+          "dur": 0.8,
+          "delay": 0.9,
+          "out": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "webmotion-render",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "preview": "remotion studio src/index.jsx",
+    "render": "remotion render src/index.jsx WebMotion out/video.mp4",
+    "web": "remotion render src/index.jsx Websitesdeal-916 out/websitesdeal.mp4",
+    "web-sq": "remotion render src/index.jsx Websitesdeal-11 out/websitesdeal-square.mp4",
+    "web-wide": "remotion render src/index.jsx Websitesdeal-169 out/websitesdeal-wide.mp4",
+    "snk": "remotion render src/index.jsx SnkCourse-916 out/snk-course.mp4",
+    "snk-sq": "remotion render src/index.jsx SnkCourse-11 out/snk-course-square.mp4",
+    "snk-wide": "remotion render src/index.jsx SnkCourse-169 out/snk-course-wide.mp4"
+  },
+  "dependencies": {
+    "remotion": "latest",
+    "@remotion/cli": "latest",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
